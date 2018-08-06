@@ -1,3 +1,4 @@
+require 'pry'
 # Write your code here!
   def game_hash
 {
@@ -155,6 +156,11 @@ def shoe_size (player_name)
   player[:shoe]
 end
 
+def get_rebound (player_name)
+  player = player_stats(player_name)
+  player[:rebounds]
+end
+
 def get_team (team_name)
   game_hash.values.find{|team| team.fetch(:team_name) == team_name}
 end
@@ -170,5 +176,12 @@ def big_shoe_rebounds
   big_shoe_guy[:rebounds]
 end
 
+def most_points_number 
+  players = get_players
+  most_scores = players.max_by{|player, stats| stats.fetch(:points)}[1]
+  binding.pry
+  most_scores[:number]
+end
 
+most_points_number
 
